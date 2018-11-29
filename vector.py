@@ -29,13 +29,13 @@ class Vector:
 
     def __add__(self, other):
         """ Returns component-wise sum as a Vector """
-        sum_x = self.x + other.x
-        sum_y = self.y + other.y
+        sum_x = [sum(zip(self.components, other.components))]
+        sum_y = [sum(zip(self.components, other.components))]
         return Vector(sum_x, sum_y)
 
     def __mul__(self, other):
         """ Returns dot product """
-        return self.x*other.x + self.y*other.y
+        return [(x * y for x, y in zip(self.x, other.x)) + (x * y for x, y in zip(self.y, other.y))]
 
     def __rmul__(self, other):
         """ Supports (left) scalar multiplication """
